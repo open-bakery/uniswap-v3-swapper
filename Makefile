@@ -2,6 +2,10 @@
 # (-include to ignore error if it does not exist)
 -include .env
 
+deploy:; forge script script/Swapper.s.sol:SwapperScript --rpc-url $(MAINNET_RPC) --broadcast
+
+deployTest:; forge script script/Swapper.s.sol:SwapperScript --rpc-url "http://localhost:8545" --broadcast
+
 gas-report:
 	forge test -vv --gas-report --fork-url $(MAINNET_RPC)
 
