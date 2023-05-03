@@ -39,7 +39,7 @@ contract Swapper {
     );
 
     ERC20(params.tokenIn).safeTransferFrom(msg.sender, address(this), params.amountIn);
-    ERC20(params.tokenIn).safeApprove(UNISWAP_V3_ROUTER, params.amountIn);
+    ERC20(params.tokenIn).safeIncreaseAllowance(UNISWAP_V3_ROUTER, params.amountIn);
 
     uint160 sqrtPriceX96 = (params.oracleSeconds == 0)
       ? Helper.sqrtPriceX96(swapPool)
